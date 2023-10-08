@@ -14,6 +14,10 @@ import { extendedRequestMiddleware } from './middleware/middleware.js';
 import apiRoutes from './router/index.js';
 import { pingRes, testAuth } from './helper/extraHelper.js';
 
+
+// initial database
+import './models/index.js';
+
 const app = express();
 const appLog = debug('app:app -> ');
 const { availableLocals, defaultLanguage, projectRoot, whiteList } = appConfig;
