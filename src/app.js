@@ -7,9 +7,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
-import session from 'express-session';
 
-import { sessionClear, sessionConfig } from './helper/sessionHelper.js';
 import appConfig from './appConfig.js';
 import { errHandler, headerFunction, notFound, unauthorizedErrors } from './middleware/errorMiddleware.js';
 import { extendedRequestMiddleware } from './middleware/middleware.js';
@@ -66,7 +64,7 @@ app.all('*', headerFunction);
 
 app.get('/', testAuth);
 app.get('/ping', pingRes);
-app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 app.use(unauthorizedErrors);
 app.use(errHandler);
