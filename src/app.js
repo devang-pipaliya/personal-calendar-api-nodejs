@@ -25,10 +25,7 @@ i18n.configure({
   directory: path.join(projectRoot, 'src', 'locals'),
   defaultLocale: defaultLanguage,
 });
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1); // trust first proxy
-  sessionConfig.cookies.secure = true; // serve secure cookies
-}
+
 const corsOptionsDelegate = function(req, callback) {
   let corsOptions;
   if (whiteList.indexOf(req.header('Origin')) !== -1) {
@@ -53,16 +50,7 @@ const corsOptionsDelegate = function(req, callback) {
 
 app.use(i18n.init);
 app.use(cookieParser());
-app.use(
-    session({
-      name: 'back-end-temp',
-      key: sessionConfig.key,
-      secret: sessionConfig.secret,
-      resave: sessionConfig.resave,
-      saveUninitialized: sessionConfig.saveUninitialized,
-      cookie: sessionConfig.cookies,
-    }),
-);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined'));
@@ -72,7 +60,6 @@ app.set('showStackError', true);
 app.use('*', cors(corsOptionsDelegate));
 
 
-app.use(sessionClear);
 app.use(extendedRequestMiddleware);
 
 app.all('*', headerFunction);

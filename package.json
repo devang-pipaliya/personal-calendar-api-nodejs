@@ -9,13 +9,13 @@
  "private": true,
  "type": "module",
  "engines": {
-  "node": "^19.3.0",
-  "npm": "^9.2.0",
+  "node": "^18.18.0",
+  "npm": "^9.8.1",
   "yarn": "^1.22.19"
  },
  "dependencies": {
   "compression": "^1.7.4",
-  "config": "^3.3.8",
+  "config": "^3.3.9",
   "cookie-parser": "^1.4.6",
   "cors": "^2.8.5",
   "debug": "^4.3.4",
