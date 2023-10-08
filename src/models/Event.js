@@ -11,7 +11,6 @@ const USER_TYPE={
 const _schema = new Schema({
   title: { type: String, default: '' },
   scheduled_date: { type: String, default: '' },
-  duration: { type: String, default: '' },
   status: { type: String, default: '' },
   duration: { type: Number, default: 0 },
   participant: [{
